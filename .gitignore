@@ -1,0 +1,44 @@
+# Project documentation (internal use only)
+.claude/
+CLAUDE.md
+implementation.md
+.env.example
+
+# Environment files
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data files (usually too large for git)
+data/raw/
+data/processed/
+*.csv
+*.dat
+
+# Results
+results/
+
+# Temporary files
+tmp/
+*.tmp
