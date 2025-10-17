@@ -1,0 +1,50 @@
+services:
+  mcs:
+    image: mariadb/columnstore:latest
+    container_name: mcs_container
+    hostname: mcs_container
+    restart: unless-stopped
+
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "${DB_PORT}:3306"
+
+    volumes:
+      - mariadb-data:/var/lib/mysql
+      - columnstore-data:/var/lib/columnstore
+      - ./scripts:/scripts
+      - ./data:/data
+
+    extra_hosts:
+      - "mcs_container:127.0.1.1"
+
+    networks:
+      columnstore_net:
+        aliases:
+          - mcs_container
+
+    healthcheck:
+      test: ["CMD", "bash", "/scripts/wait-for-columnstore.sh"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+      start_period: 180s
+
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+volumes:
+  mariadb-data:
+    driver: local
+  columnstore-data:
+    driver: local
+
+networks:
+  columnstore_net:
+    driver: bridge

@@ -32,6 +32,7 @@ class DatabaseConnection:
             table_name: Name of the table to use for queries
         """
         self.table_name = table_name
+        self.config = DB_CONFIG
         self.conn = None
         self.cursor = None
 

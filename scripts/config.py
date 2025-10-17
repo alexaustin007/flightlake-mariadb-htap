@@ -7,9 +7,13 @@ including database credentials, table names, benchmark settings, and output path
 
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 # Project root directory
 PROJECT_ROOT = Path(__file__).parent.parent
+
+# Load environment variables from .env file
+load_dotenv(PROJECT_ROOT / '.env')
 
 # Database configuration
 DB_CONFIG = {
@@ -42,10 +46,10 @@ ENRICHMENT_CONFIG = {
     'min_seats': 50,
     'max_seats': 550,
     'seat_ranges': {
-        'short_haul': (100, 180),    # < 1500 km
-        'medium_haul': (150, 250),   # 1500-4000 km
-        'long_haul': (200, 350),     # 4000-8000 km
-        'ultra_long_haul': (250, 550) # > 8000 km
+        'short_haul': (100, 180),    # < 500 km
+        'medium_haul': (150, 250),   # 500-1500 km
+        'long_haul': (200, 350),     # 1500-4000 km
+        'ultra_long_haul': (250, 550) # > 4000 km
     }
 }
 

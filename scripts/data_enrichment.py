@@ -187,7 +187,10 @@ class FlightDataEnricher:
 
         # Create airport lookup dictionaries
         airport_lookup = self.airports.set_index('iata_code').to_dict('index')
-        airline_lookup = self.airlines.set_index('iata_code').to_dict('index')
+
+        # Handle duplicate airline IATA codes by keeping first occurrence
+        airlines_dedupe = self.airlines.drop_duplicates(subset=['iata_code'], keep='first')
+        airline_lookup = airlines_dedupe.set_index('iata_code').to_dict('index')
 
         enriched_routes = []
         skipped = 0
