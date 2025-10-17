@@ -1,4 +1,3 @@
--- FlightLake Database Creation Script
 -- This script creates the database and sets up initial configuration
 
 -- Create database

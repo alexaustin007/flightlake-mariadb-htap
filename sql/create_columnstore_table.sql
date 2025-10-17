@@ -1,5 +1,4 @@
--- FlightLake ColumnStore Table Creation Script
--- This table serves as the analytical data store (OLAP)
+-- FlightLake ColumnStore Table Creation Script serves as the analytical data store (OLAP)
 
 USE flightlake;
 

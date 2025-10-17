@@ -100,37 +100,6 @@ QUERIES = {
         """
     },
 
-    "hub_concentration": {
-        "name": "Hub Concentration Analysis",
-        "description": "Calculate percentage of capacity flowing through top hubs",
-        "category": "Market Concentration",
-        "use_case": "Competition analysis - measuring market concentration",
-        "sql": """
-            WITH hub_capacity AS (
-                SELECT
-                    origin_airport,
-                    SUM(seats) AS hub_seats
-                FROM {table_name}
-                WHERE flight_date >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
-                GROUP BY origin_airport
-            ),
-            total_capacity AS (
-                SELECT SUM(seats) AS total_seats
-                FROM {table_name}
-                WHERE flight_date >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)
-            )
-            SELECT
-                h.origin_airport,
-                h.hub_seats,
-                ROUND(100.0 * h.hub_seats / t.total_seats, 2) AS pct_of_total,
-                ROUND(SUM(100.0 * h.hub_seats / t.total_seats) OVER (ORDER BY h.hub_seats DESC), 2) AS cumulative_pct
-            FROM hub_capacity h
-            CROSS JOIN total_capacity t
-            ORDER BY h.hub_seats DESC
-            LIMIT 20
-        """
-    },
-
     "distance_analysis": {
         "name": "Long-Haul vs Short-Haul Analysis",
         "description": "Compare capacity distribution by flight distance categories",
