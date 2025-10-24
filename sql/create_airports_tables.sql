@@ -3,9 +3,9 @@
 
 USE flightlake;
 
--- ============================================
+
 -- AIRPORTS INNODB TABLE (Transactional)
--- ============================================
+
 
 DROP TABLE IF EXISTS airports_innodb;
 
@@ -44,9 +44,9 @@ CREATE TABLE airports_innodb (
 SELECT 'airports_innodb table created successfully!' AS Status;
 
 
--- ============================================
+
 -- AIRPORTS COLUMNSTORE TABLE (Analytical)
--- ============================================
+
 
 DROP TABLE IF EXISTS airports_columnstore;
 

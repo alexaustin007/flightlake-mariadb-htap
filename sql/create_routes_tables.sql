@@ -4,9 +4,9 @@
 
 USE flightlake;
 
--- ============================================
+
 -- ROUTES INNODB TABLE (Transactional)
--- ============================================
+
 
 DROP TABLE IF EXISTS routes_innodb;
 
@@ -42,9 +42,9 @@ CREATE TABLE routes_innodb (
 SELECT 'routes_innodb table created successfully!' AS Status;
 
 
--- ============================================
+
 -- ROUTES COLUMNSTORE TABLE (Analytical)
--- ============================================
+
 
 DROP TABLE IF EXISTS routes_columnstore;
 

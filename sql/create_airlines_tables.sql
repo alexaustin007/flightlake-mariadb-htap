@@ -3,9 +3,9 @@
 
 USE flightlake;
 
--- ============================================
+
 -- AIRLINES INNODB TABLE (Transactional)
--- ============================================
+
 
 DROP TABLE IF EXISTS airlines_innodb;
 
@@ -36,9 +36,9 @@ CREATE TABLE airlines_innodb (
 SELECT 'airlines_innodb table created successfully!' AS Status;
 
 
--- ============================================
+
 -- AIRLINES COLUMNSTORE TABLE (Analytical)
--- ============================================
+
 
 DROP TABLE IF EXISTS airlines_columnstore;
 

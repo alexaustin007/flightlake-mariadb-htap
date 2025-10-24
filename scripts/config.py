@@ -21,12 +21,14 @@ DB_CONFIG = {
     'port': int(os.getenv('DB_PORT', 3306)),
     'user': os.getenv('DB_USER', 'root'),
     'password': os.getenv('DB_PASSWORD', 'your_password'),
-    'database': os.getenv('DB_NAME', 'flightlake')
+    'database': os.getenv('DB_NAME', 'flightlake'),
+    'local_infile': True,  # Enable local infile for data loading
+    'ssl': False  # Disable SSL for local development
 }
 
 # Table names
-INNODB_TABLE = 'routes_innodb'
-COLUMNSTORE_TABLE = 'routes_columnstore'
+INNODB_TABLE = 'flights_innodb_analytics_table'
+COLUMNSTORE_TABLE = 'flights_columnstore_analytics_table'
 
 # Data paths
 DATA_DIR = PROJECT_ROOT / 'data'

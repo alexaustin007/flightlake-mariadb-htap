@@ -137,7 +137,6 @@ class DatabaseConnection:
         try:
             self.cursor.execute("RESET QUERY CACHE")
         except mariadb.Error:
-            # Query cache might not be enabled or supported
             pass
 
     def get_explain(self, sql: str) -> List[Tuple]:
